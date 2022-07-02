@@ -1,0 +1,357 @@
+$Scissors_Gradient: hsl(39, 89%, 49%);
+$Scissors_Gradient2: hsl(40, 84%, 53%);
+$Paper_Gradient: hsl(230, 89%, 62%);
+$Paper_Gradient2: hsl(230, 89%, 65%);
+$Rock_Gradient: hsl(349, 71%, 52%);
+$Rock_Gradient2: hsl(349, 70%, 56%);
+$Cyan: hsl(189, 59%, 53%);
+$Cyan2: hsl(189, 58%, 57%);
+$Lizard_Gradient: hsl(261, 73%, 60%);
+$Lizard_Gradient2: hsl(261, 72%, 63%);
+$light: hsl(0, 0%, 98%);
+// ### Neutral
+$Dark_Text: hsl(229, 25%, 31%);
+$Score_Text: hsl(229, 64%, 46%);
+$Header_Outline: hsl(217, 16%, 45%);
+// ### Background
+$Radial_Gradient: hsl(214, 47%, 23%);
+$Radial_Gradient2: hsl(237, 49%, 15%);
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    background: radial-gradient(ellipse at top, $Radial_Gradient, $Radial_Gradient2);
+    background-size: cover;
+    height: 100vh;
+    font-size: 16px;
+    color: $Dark_Text;
+}
+
+button {
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+
+.scoreboard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid $Header_Outline;
+    border-radius: 5px;
+    padding: 12px;
+    padding-left: 20px;
+    width: 85%;
+    max-width: 700px;
+    margin: 20px auto 80px auto;
+    .logo {
+        width: 22vw;
+        max-width: 84px;
+    }
+    .score_wrapper {
+        text-align: center;
+        padding: 5% 0;
+        background-color: $light;
+        width: 18vw;
+        max-width: 150px;
+        max-height: 115px;
+        border-radius: 5px;
+        .score_header {
+            font-size: 11px;
+            text-transform: uppercase;
+            font-weight: 400;
+            color: $Score_Text;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        .score_text {
+            font-size: 40px;
+            line-height: 75%;
+        }
+        @media screen and (min-width: 600px) {
+            .score_header {
+                margin-bottom: 12px;
+            }
+            .score_text {
+                font-size: 60px;
+            }
+        }
+    }
+    @media screen and (min-width: 600px) {
+        .score_wrapper {
+            padding: 3% 0;
+        }
+    }
+}
+
+.game {
+    position: relative;
+    margin-bottom: 138px;
+    .game_wrapper {
+        display: flex;
+        align-content: center;
+        justify-content: space-between;
+        flex-direction: column;
+        gap: 12px;
+        position: relative;
+        width: 312px;
+        max-width: 472px;
+        margin: auto;
+        >div {
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            gap: 130px;
+        }
+        >div:last-of-type {
+            gap: 55px;
+            margin-top: 38px;
+        }
+    }
+    .choice {
+        position: relative;
+        transition: .3s ease;
+        margin: auto;
+        button {
+            border-radius: 50%;
+            height: 75px;
+            width: 75px;
+            display: grid;
+            place-items: center;
+            box-shadow: inset 0 0.3rem rgba(0, 0, 0, 0.161);
+            cursor: pointer;
+            img {
+                transform: scale(0.7);
+            }
+        }
+    }
+    @media screen and (min-width: 600px) {
+        .choice {
+            transform: scale(1.47);
+        }
+        .game_wrapper {
+            
+            gap: 20px;
+            >div {
+                gap: 215px;
+            }
+            >div:last-of-type {
+                gap: 90px;
+                margin-top: 75px;
+            }
+        }
+    }
+    .choice::before,
+    .choice::after {
+        content: "";
+        position: absolute;
+        left: -10px;
+        top: -10px;
+        width: 95px;
+        height: 95px;
+        border-radius: 50%;
+        z-index: -2;
+    }
+    .rock::before {
+        background: linear-gradient(to bottom, $Rock_Gradient, $Rock_Gradient2);
+        box-shadow: 0 0.3rem rgba(0, 0, 0, 0.2), 0 0.3rem $Rock_Gradient2;
+    }
+    .scissors::before {
+        background: linear-gradient(to bottom, $Scissors_Gradient, $Scissors_Gradient2);
+        box-shadow: 0 0.3rem rgba(0, 0, 0, 0.2), 0 0.3rem $Scissors_Gradient2;
+    }
+    .paper::before {
+        background: linear-gradient(to bottom, $Paper_Gradient, $Paper_Gradient2);
+        box-shadow: 0 0.3rem rgba(0, 0, 0, 0.2), 0 0.3rem $Paper_Gradient2;
+    }
+    .lizard::before {
+        background: linear-gradient(to bottom, $Lizard_Gradient, $Lizard_Gradient);
+        box-shadow: 0 0.3rem rgba(0, 0, 0, 0.2), 0 0.3rem $Lizard_Gradient2;
+    }
+    .spock::before {
+        background: linear-gradient(to bottom, $Cyan, $Cyan2);
+        box-shadow: 0 0.3rem rgba(0, 0, 0, 0.2), 0 0.3rem $Cyan2;
+    }
+    .choice:hover {
+        transform: translateY(-3%);
+    }
+    .game_wrapper::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        height: 80%;
+        background-image: url(../images/bg-pentagon.svg);
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        z-index: -2;
+    }
+    .result_wrapper {
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-areas: "user_choice house_choice" "user_choice_title house_choice_title" "result_winner result_winner";
+        gap: 40px;
+        min-width: 300px;
+        max-width: 920px;
+        margin: 0 auto;
+        place-items: center;
+        .choice {
+            transform: scale(1.3);
+        }
+        .result {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background-color: hsl(220, 46, 19);
+            z-index: -3;
+            display: grid;
+            place-items: center;
+        }
+        .title {
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 10px;
+            color: #fff;
+            font-weight: 700;
+        }
+        .user_choice {
+            grid-area: user_choice;
+        }
+        .house_choice {
+            grid-area: house_choice;
+        }
+        .user_choice_title {
+            grid-area: user_choice_title;
+        }
+        .house_choice_title {
+            grid-area: house_choice_title;
+        }
+        .result_winner {
+            grid-area: result_winner;
+            text-transform: uppercase;
+            color: $light;
+            text-align: center;
+            .winner_text {
+                font-size: 55px;
+                margin-bottom: 25px;
+            }
+            .play_again {
+                width: 220px;
+                height: 48px;
+                background: $light;
+                color: $Dark_Text;
+                text-transform: inherit;
+                letter-spacing: 1px;
+                border-radius: 10px;
+                
+            }
+        }
+        @media screen and (min-width: 600px) {
+            .choice {
+                transform: scale(1.8);
+            }
+        }
+    }
+    @media screen and (min-width: 600px) {
+        .result_wrapper {            
+            grid-template-areas:  "user_choice_title . house_choice_title" "user_choice result_winner house_choice";
+        }
+        .choice {
+            transform: scale(1.5);
+        }
+    }
+    .hidden {
+        display: none;
+    }
+}
+
+.show_rules {
+    width: 130px;
+    height: 42px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 2%;
+    border: 2px solid $Header_Outline;
+    border-radius: 5px;
+    background: none;
+    color: $light;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.rules_wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    z-index: 2;
+    text-align: center;
+    left: 0;
+    top: 0;
+    transition: opacity 0.1s ease-in-out;
+    div {
+        background-color: $light;
+        height: 100%;      
+        .header {
+            font-size: 30px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: $Dark_Text;
+            padding: 70px 0;
+        }
+        .close_rules {
+            display: block;
+            margin: auto;
+            margin-top: 80px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+    }
+}
+
+.hidden2 {
+    display: none;
+}    
+@media screen and (min-width: 600px) {
+    .rules_wrapper {
+        display: grid;
+        position: absolute;
+        text-align: left;
+        background: rgba(0, 0, 0, 0.356);
+        place-items: center;
+        div {
+            height: 460px;      
+            width: 400px;
+            border-radius: 5px;
+            padding: 35px;
+            position: relative;
+            img {
+                width: 100%;
+                margin-top: 22px;
+            }
+            .header {
+                padding: 0;
+            }
+            .close_rules {
+                margin-top: 0;
+                position: absolute;
+                top: 30px;
+                right: 35px;
+            }
+        }
+    }
+    
+}
+
+.hidden {
+    opacity: 0;
+    z-index: -2;
+}
