@@ -276,16 +276,21 @@ button {
     width: 130px;
     height: 42px;
     position: absolute;
+    bottom: 2%;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 2%;
     border: 2px solid $Header_Outline;
     border-radius: 5px;
-    background: none;
     color: $light;
     text-transform: uppercase;
     letter-spacing: 1px;
+    background: none;
+    @media screen and(min-width: 600px) {
+        left: 100%;
+        transform: translateX(-150%);
+    }
 }
+
 
 .rules_wrapper {
     position: absolute;

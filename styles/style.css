@@ -256,15 +256,21 @@ button {
   width: 130px;
   height: 42px;
   position: absolute;
+  bottom: 2%;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 2%;
   border: 2px solid hsl(217deg, 16%, 45%);
   border-radius: 5px;
-  background: none;
   color: hsl(0deg, 0%, 98%);
   text-transform: uppercase;
   letter-spacing: 1px;
+  background: none;
+}
+@media screen and (min-width: 600px) {
+  .show_rules {
+    left: 100%;
+    transform: translateX(-150%);
+  }
 }
 
 .rules_wrapper {
