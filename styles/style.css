@@ -256,7 +256,7 @@ button {
   width: 130px;
   height: 42px;
   position: absolute;
-  margin-top: 50px;
+  margin-top: 30px;
   left: 50%;
   transform: translateX(-50%);
   border: 2px solid hsl(217deg, 16%, 45%);
